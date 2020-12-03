@@ -873,7 +873,8 @@ parentViewController:(UIViewController*)parentViewController
 
     id cancelButton = [[UIBarButtonItem alloc]
 //                        initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                       initWithBarButtonSystemItem:UIBarButtonSystemItemCamera
+                       initWithTitle:@"Clear"
+                       style:UIBarButtonItemStyleBordered
                        target:(id)self
                        action:@selector(cancelButtonPressed:)
                        ];
