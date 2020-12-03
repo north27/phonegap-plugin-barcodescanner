@@ -50,7 +50,7 @@
 						<array class="NSMutableArray" key="IBUIItems">
 							<object class="IBUINavigationItem" id="240626599">
 								<reference key="IBUINavigationBar" ref="1064216609"/>
-								<string key="IBUITitle">Barcode Scanner</string>
+								<string key="IBUITitle">Barcode Scanner-North27</string>
 								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="1053701234">
 									<string key="IBUITitle">Cancel-North27</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -62,7 +62,7 @@
 						</array>
 					</object>
 				</array>
-				<string key="NSFrameSize">{320, 460}</string>
+				<string key="NSFrameSize">{3200, 4600}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="1064216609"/>
