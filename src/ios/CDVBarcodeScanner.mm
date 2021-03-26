@@ -104,6 +104,9 @@
 // unsafe_unretained is equivalent to assign - used to prevent retain cycles in the property below
 @property (nonatomic, unsafe_unretained) id orientationDelegate;
 
+// To prevent camera modal from closing when user swipes or click on corners/backdrop
+@property (nonatomic, getter=isModalInPresentation) BOOL modalInPresentation;
+
 - (id)initWithProcessor:(CDVbcsProcessor*)processor alternateOverlay:(NSString *)alternateXib;
 - (void)startCapturing;
 - (UIView*)buildOverlayView;
@@ -351,6 +354,11 @@ parentViewController:(UIViewController*)parentViewController
     self.viewController = [[CDVbcsViewController alloc] initWithProcessor: self alternateOverlay:self.alternateXib];
     // here we set the orientation delegate to the MainViewController of the app (orientation controlled in the Project Settings)
     self.viewController.orientationDelegate = self.plugin.viewController;
+    
+    // To prevent camera modal from closing when user swipes or click on corners/backdrop
+    if (@available(iOS 13.0, *)) {
+        self.viewController.modalInPresentation = YES;
+    }
 
     // delayed [self openDialog];
     [self performSelector:@selector(openDialog) withObject:nil afterDelay:1];
@@ -358,8 +366,10 @@ parentViewController:(UIViewController*)parentViewController
 
 //--------------------------------------------------------------------------
 - (void)openDialog {
-    
-    [self.viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+// This is another approach, but caveat is media wont play until camera resource is not fully released.
+// If playing media wait for camera to completely release.
+// Not using now.
+//     [self.viewController setModalPresentationStyle:UIModalPresentationFullScreen];
     
     [self.parentViewController
      presentViewController:self.viewController
